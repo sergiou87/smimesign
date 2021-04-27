@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        go: [1.12.x, 1.x, main]
+        go: [1.12.x, 1.x, x]
         os: [macos-10.15]
         arch: [amd64, arm64]
         include:
@@ -23,6 +23,9 @@ jobs:
             friendlyName: macOS
           # - os: windows-2019
           #   friendlyName: Windows
+        exclude:
+          - arch: arm64
+            go: 1.12.x
     timeout-minutes: 60
     env:
       # Needed for macOS arm64 until hosted macos-11.0 runners become available
